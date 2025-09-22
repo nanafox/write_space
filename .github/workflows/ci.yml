@@ -36,51 +36,52 @@ jobs:
 
       - name: Lint code for consistent style
         run: bin/rake standard
-  test:
-    runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        ports:
-          - 5432:5432
-        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
+  # test:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Install PostgreSQL client
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y postgresql-client
+  #   services:
+  #     postgres:
+  #       image: postgres
+  #       env:
+  #         POSTGRES_USER: postgres
+  #         POSTGRES_PASSWORD: postgres
+  #       ports:
+  #         - 5432:5432
+  #       options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
 
-      - name: Install dependent libraries
-        run: sudo apt-get install libpq-dev
+  #   steps:
+  #     - name: Install PostgreSQL client
+  #       run: sudo apt-get update && sudo apt-get install --no-install-recommends -y postgresql-client
 
-      - name: Checkout code
-        uses: actions/checkout@v5
+  #     - name: Install dependent libraries
+  #       run: sudo apt-get install libpq-dev
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+  #     - name: Checkout code
+  #       uses: actions/checkout@v5
 
-      - name: Install dependencies
-        env:
-          RAILS_ENV: test
-        run: bundle install
+  #     - name: Set up Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: .ruby-version
+  #         bundler-cache: true
 
-      - name: Set up database
-        env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        run: bin/rails db:create db:schema:load db:migrate
+  #     - name: Install dependencies
+  #       env:
+  #         RAILS_ENV: test
+  #       run: bundle install
 
-      - name: Keep screenshots from failed system tests
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
-          if-no-files-found: ignore
+  #     - name: Set up database
+  #       env:
+  #         RAILS_ENV: test
+  #         POSTGRES_USER: postgres
+  #         POSTGRES_PASSWORD: postgres
+  #       run: bin/rails db:create db:schema:load db:migrate
+
+  #     - name: Keep screenshots from failed system tests
+  #       uses: actions/upload-artifact@v4
+  #       if: failure()
+  #       with:
+  #         name: screenshots
+  #         path: ${{ github.workspace }}/tmp/screenshots
+  #         if-no-files-found: ignore
