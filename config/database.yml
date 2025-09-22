@@ -86,9 +86,6 @@ test:
   primary:
     <<: *default
     database: write_space_test
-    host: localhost
-    username: <%= ENV['POSTGRES_USER'] %>
-    password: <%= ENV['POSTGRES_PASSWORD'] %>
 
   cache: *cache
   queue: *queue

@@ -31,7 +31,7 @@ class UserRodauthPlugin < RodauthPlugin
     # hmac_secret "<SECRET_KEY>"
 
     # Use path prefix for all routes.
-    prefix "/users"
+    prefix "/auth"
 
     # Store password hash in a column instead of a separate table.
     account_password_hash_column :password_hash
@@ -68,6 +68,8 @@ class UserRodauthPlugin < RodauthPlugin
 
     # ==> Emails
     # Use a custom mailer for delivering authentication emails.
+
+    require_password_confirmation? false
 
     create_reset_password_email do
       Rodauth::UserMailer.reset_password(self.class.configuration_name, account_id, reset_password_key_value)
@@ -166,13 +168,15 @@ class UserRodauthPlugin < RodauthPlugin
     #   Profile.find_by!(account_id: account_id).destroy
     # end
 
+    create_account_route "signup"
+
     # ==> Redirects
 
     # Redirect to home after login.
-    create_account_redirect "/"
+    create_account_redirect { login_redirect }
 
     # Redirect to home after login.
-    login_redirect "/"
+    login_redirect "/dashboard"
 
     # Redirect to home page after logout.
     logout_redirect "/"

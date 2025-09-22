@@ -5,7 +5,7 @@ module Rodauth
 
     private
 
-    def current_account
+    def current_user
       rodauth.rails_account
     end
 
