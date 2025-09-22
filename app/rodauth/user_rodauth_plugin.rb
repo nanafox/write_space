@@ -159,9 +159,11 @@ class UserRodauthPlugin < RodauthPlugin
     # end
 
     # Perform additional actions after the account is created.
-    # after_create_account do
-    #   Profile.create!(account_id: account_id, name: param("name"))
-    # end
+    after_create_account do
+      # automatically verify the account after creation since we don't have email setup yet
+      user = User.find(account_id)
+      user.verified!
+    end
 
     # Do additional cleanup after the account is closed.
     # after_close_account do
