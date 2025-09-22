@@ -63,3 +63,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "plutonium", "~> 0.26.8"
