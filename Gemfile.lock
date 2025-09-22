@@ -80,6 +80,7 @@ GEM
       activerecord (>= 3.2)
     ast (2.4.3)
     base64 (0.3.0)
+    bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
     benchmark (0.4.1)
     bigdecimal (3.2.3)
@@ -350,6 +351,18 @@ GEM
     reline (0.6.2)
       io-console (~> 0.5)
     rexml (3.4.4)
+    roda (3.96.0)
+      rack
+    rodauth (2.40.0)
+      roda (>= 2.6.0)
+      sequel (>= 4)
+    rodauth-model (0.4.0)
+      rodauth (~> 2.28)
+    rodauth-rails (2.1.0)
+      railties (>= 5.1, < 8.1)
+      roda (~> 3.76)
+      rodauth (~> 2.36)
+      rodauth-model (~> 0.2)
     rubocop (1.80.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -379,6 +392,11 @@ GEM
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     semantic_range (3.1.0)
+    sequel (5.96.0)
+      bigdecimal
+    sequel-activerecord_connection (2.0.0)
+      activerecord (>= 5.0, < 8.1)
+      sequel (~> 5.38)
     sin_lru_redux (2.5.2)
     solid_cable (3.0.12)
       actioncable (>= 7.2)
@@ -436,6 +454,7 @@ GEM
     thruster (0.1.15)
     thruster (0.1.15-aarch64-linux)
     thruster (0.1.15-x86_64-linux)
+    tilt (2.6.1)
     timeout (0.4.3)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
@@ -484,6 +503,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotated (~> 0.1.1)
+  bcrypt (~> 3.1)
   bootsnap
   brakeman
   capybara
@@ -499,7 +519,9 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2, >= 8.0.2.1)
+  rodauth-rails (~> 2.1)
   selenium-webdriver
+  sequel-activerecord_connection (~> 2.0)
   solid_cable
   solid_cache
   solid_errors (~> 0.5)
@@ -508,6 +530,7 @@ DEPENDENCIES
   standard (>= 1.35.1)
   stimulus-rails
   thruster
+  tilt (~> 2.6)
   turbo-rails
   tzinfo-data
   web-console
