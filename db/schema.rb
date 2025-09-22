@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_09_22_195522) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "user_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -38,7 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_22_195522) do
     t.integer "status", default: 1, null: false
     t.string "email", null: false
     t.string "password_hash"
-    t.index ["email"], name: "index_users_on_email", unique: true, where: "status IN (1, 2)"
+    t.index ["email"], name: "index_users_on_email", unique: true, where: "(status = ANY (ARRAY[1, 2]))"
   end
 
   add_foreign_key "user_login_change_keys", "users", column: "id"

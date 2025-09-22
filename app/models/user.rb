@@ -2,17 +2,18 @@
 #
 # Table name: users
 #
-#  id            :integer          not null, primary key
+#  id            :bigint           not null, primary key
 #  email         :string           not null
 #  password_hash :string
-#  status        :integer          default("unverified"), not null
+#  status        :integer          default(1), not null
 #
 # Indexes
 #
-#  index_users_on_email  (email) UNIQUE WHERE status IN (1, 2)
+#  index_users_on_email  (email) UNIQUE WHERE (status = ANY (ARRAY[1, 2]))
 #
 class User < ResourceRecord
   include Rodauth::Rails.model(:user)
+
   # add concerns above.
 
   # add model configurations above.
