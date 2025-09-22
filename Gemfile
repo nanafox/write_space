@@ -67,3 +67,5 @@ group :test do
 end
 
 gem "plutonium", "~> 0.26.8"
+
+gem "annotated", "~> 0.1.1", group: :development
