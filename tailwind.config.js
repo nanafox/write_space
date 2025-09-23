@@ -4,7 +4,7 @@ const plutoniumTailwindConfig = require(`${plutoniumGemPath}/tailwind.options.js
 const tailwindPlugin = require('tailwindcss/plugin');
 
 module.exports = {
-  darkMode: plutoniumTailwindConfig.darkMode,
+  darkMode: 'class',
   plugins: [
     // add plugins here
   ].concat(

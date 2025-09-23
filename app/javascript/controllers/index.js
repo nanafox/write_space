@@ -13,5 +13,9 @@ application.register('mobile-menu', MobileMenuController);
 import SmoothScrollController from './smooth_scroll_controller';
 application.register('smooth-scroll', SmoothScrollController);
 
+import DarkModeController from './dark_mode_controller';
+application.register('dark-mode', DarkModeController);
+
+
 import { registerControllers } from '@radioactive-labs/plutonium';
 registerControllers(application);

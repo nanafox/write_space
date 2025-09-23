@@ -1,84 +1,40 @@
-<section class="bg-gradient-to-br from-neutral-50 to-primary-50 py-20 lg:py-28">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Hero Content -->
-      <div class="animate-fade-in">
-        <h1 class="text-4xl lg:text-6xl font-bold text-neutral-900 leading-tight mb-6">
-          Your space to
-          <span class="text-primary-600">write</span> and
-          <span class="text-accent-500">share</span> ideas
-        </h1>
+<section class="bg-white dark:bg-neutral-900 py-20 lg:py-32">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Hero Content -->
+    <div class="animate-fade-in">
+      <h1 class="text-4xl lg:text-6xl font-bold text-neutral-900 dark:text-white leading-tight mb-6">
+        Own Your Content.
+        <span class="bg-gradient-to-r from-primary-600 to-accent-500 text-transparent bg-clip-text">
+          Own Your Future.
+        </span>
+      </h1>
 
-        <p class="text-lg lg:text-xl text-neutral-600 mb-8 leading-relaxed">
-          WriteSpace gives every writer their own corner of the internet. Create engaging content,
-          build your audience, and connect with a community that values great writing.
-        </p>
+      <p class="text-lg lg:text-xl text-neutral-600 dark:text-neutral-300 mb-10 leading-relaxed max-w-2xl mx-auto">
+        WriteSpace is a simple, powerful, and open-source platform for writers who want to focus on what matters most: creating great content.
+      </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 mb-8">
-          <a href="<%= authenticated? ? "/dashboard" : rodauth(:user).create_account_path %>" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl text-center">
-            Start Writing Today
-          </a>
-          <a href="#features" class="bg-white hover:bg-neutral-50 text-neutral-900 border border-neutral-300 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 text-center">
-            Explore Features
-          </a>
-        </div>
+      <div class="flex justify-center mb-12">
+        <a href="<%= authenticated? ? "/dashboard" : rodauth(:user).create_account_path %>" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl text-center">
+          Start Your Blog for Free
+        </a>
+      </div>
 
-        <!-- Social Proof -->
-        <div class="flex items-center space-x-6 text-sm text-neutral-500">
+      <!-- Social Proof -->
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        <p class="mb-4">Trusted by writers and developers worldwide</p>
+        <div class="flex justify-center items-center space-x-8">
           <div class="flex items-center space-x-2">
             <%= heroicon "star", variant: :solid, options: { class: "w-5 h-5 text-accent-500" } %>
-            <span>Free to use</span>
+            <span>Free & Open Source</span>
           </div>
           <div class="flex items-center space-x-2">
             <%= heroicon "check-circle", variant: :solid, options: { class: "w-5 h-5 text-accent-500" } %>
-            <span>No ads</span>
+            <span>No Ads, Ever</span>
           </div>
           <div class="flex items-center space-x-2">
-            <%= heroicon "code-bracket", variant: :solid, options: { class: "w-5 h-5 text-accent-500" } %>
-            <span>Developer-friendly</span>
+            <%= heroicon "bolt", variant: :solid, options: { class: "w-5 h-5 text-accent-500" } %>
+            <span>Fast & Performant</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Hero Visual -->
-      <div class="animate-slide-up hidden lg:block">
-        <div class="relative">
-          <!-- Main Card -->
-          <div class="bg-white rounded-2xl shadow-2xl p-6 transform rotate-2 hover:rotate-0 transition-transform duration-300">
-            <div class="flex items-center space-x-3 mb-4">
-              <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                <%= heroicon "user", variant: :solid, options: { class: "w-5 h-5 text-primary-600" } %>
-              </div>
-              <div>
-                <div class="h-3 bg-neutral-200 rounded w-24 mb-1"></div>
-                <div class="h-2 bg-neutral-100 rounded w-16"></div>
-              </div>
-            </div>
-            <div class="space-y-3">
-              <div class="h-4 bg-neutral-200 rounded w-full"></div>
-              <div class="h-4 bg-neutral-200 rounded w-4/5"></div>
-              <div class="h-4 bg-neutral-200 rounded w-3/4"></div>
-            </div>
-            <div class="flex items-center justify-between mt-4 pt-4 border-t border-neutral-100">
-              <div class="flex items-center space-x-4">
-                <div class="flex items-center space-x-1">
-                  <%= heroicon "heart", variant: :solid, options: { class: "w-4 h-4 text-red-500" } %>
-                  <span class="text-sm text-neutral-500">24</span>
-                </div>
-                <div class="flex items-center space-x-1">
-                  <%= heroicon "chat-bubble-left", variant: :solid, options: { class: "w-4 h-4 text-primary-500" } %>
-                  <span class="text-sm text-neutral-500">8</span>
-                </div>
-              </div>
-              <div class="flex items-center space-x-1">
-                <%= heroicon "chevron-right", variant: :solid, options: { class: "w-4 h-4 text-neutral-400" } %>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating Elements -->
-          <div class="absolute -top-4 -right-4 w-16 h-16 bg-accent-400 rounded-full opacity-20 animate-bounce-subtle"></div>
-          <div class="absolute -bottom-6 -left-6 w-12 h-12 bg-primary-400 rounded-full opacity-30 animate-bounce-subtle" style="animation-delay: 1s;"></div>
         </div>
       </div>
     </div>

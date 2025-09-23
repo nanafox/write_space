@@ -1,4 +1,4 @@
-<nav class="bg-white shadow-sm border-b border-neutral-200 sticky top-0 z-50" data-controller="mobile-menu">
+<nav class="bg-white dark:bg-neutral-900 shadow-sm border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-50" data-controller="mobile-menu">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo/Brand -->
@@ -7,46 +7,59 @@
           <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
             <%= heroicon "chat-bubble-left-ellipsis", variant: :solid, options: { class: "w-5 h-5 text-white" } %>
           </div>
-          <span class="text-xl font-bold text-neutral-900">WriteSpace</span>
+          <span class="text-xl font-bold text-neutral-900 dark:text-white">WriteSpace</span>
         </a>
       </div>
 
       <!-- Navigation Links (Desktop) -->
       <div class="hidden md:flex items-center space-x-8">
-        <a href="#features" class="text-neutral-600 hover:text-neutral-900 transition-colors duration-200">Features</a>
-        <a href="#about" class="text-neutral-600 hover:text-neutral-900 transition-colors duration-200">About</a>
-        <a href="#community" class="text-neutral-600 hover:text-neutral-900 transition-colors duration-200">Community</a>
+        <a href="#features" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200">Features</a>
+        <a href="#about" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200">About</a>
+        <a href="#community" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200">Community</a>
       </div>
 
-      <!-- Auth Buttons (Desktop) -->
-      <div class="hidden md:flex items-center space-x-4">
-        <a href="<%= authenticated? ? rodauth(:user).logout_path : rodauth(:user).login_path %>" class="text-neutral-600 hover:text-neutral-900 transition-colors duration-200 font-medium">
-          <%= authenticated? ? "Log Out" : "Sign In" %>
-        </a>
-        <a href="<%= rodauth(:user).create_account_path %>" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 <%= authenticated? ? 'hidden' : '' %>">
-          Get Started
-        </a>
-      </div>
+      <!-- Right side buttons -->
+      <div class="flex items-center">
+        <!-- Desktop Auth Buttons -->
+        <div class="hidden md:flex items-center space-x-4" data-controller="dark-mode">
+          <button type="button" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200" data-action="dark-mode#toggle">
+            <%= heroicon "sun", variant: :solid, options: { class: "w-6 h-6 hidden", data_dark_mode_target: "sun" } %>
+            <%= heroicon "moon", variant: :solid, options: { class: "w-6 h-6", data_dark_mode_target: "moon" } %>
+          </button>
+          <a href="<%= authenticated? ? rodauth(:user).logout_path : rodauth(:user).login_path %>" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200 font-medium">
+            <%= authenticated? ? "Log Out" : "Sign In" %>
+          </a>
+          <a href="<%= rodauth(:user).create_account_path %>" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 <%= authenticated? ? 'hidden' : '' %>">
+            Get Started
+          </a>
+        </div>
 
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden">
-        <button type="button" class="text-neutral-600 hover:text-neutral-900 transition-colors duration-200" data-action="click->mobile-menu#toggle">
-          <%= heroicon "bars-3", variant: :outline, options: { class: "w-6 h-6" } %>
-        </button>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center space-x-2">
+          <div data-controller="dark-mode">
+            <button type="button" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200" data-action="dark-mode#toggle">
+              <%= heroicon "sun", variant: :solid, options: { class: "w-6 h-6 hidden", data_dark_mode_target: "sun" } %>
+              <%= heroicon "moon", variant: :solid, options: { class: "w-6 h-6", data_dark_mode_target: "moon" } %>
+            </button>
+          </div>
+          <button type="button" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200" data-action="mobile-menu#toggle">
+            <%= heroicon "bars-3", variant: :outline, options: { class: "w-6 h-6" } %>
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- Mobile Menu -->
     <div data-mobile-menu-target="menu" class="md:hidden hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-neutral-200">
-        <a href="#features" class="block px-3 py-2 text-neutral-600 hover:text-neutral-900 transition-colors duration-200" data-action="click->mobile-menu#hide">Features</a>
-        <a href="#about" class="block px-3 py-2 text-neutral-600 hover:text-neutral-900 transition-colors duration-200" data-action="click->mobile-menu#hide">About</a>
-        <a href="#community" class="block px-3 py-2 text-neutral-600 hover:text-neutral-900 transition-colors duration-200" data-action="click->mobile-menu#hide">Community</a>
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
+        <a href="#features" class="block px-3 py-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200" data-action="mobile-menu#hide">Features</a>
+        <a href="#about" class="block px-3 py-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200" data-action="mobile-menu#hide">About</a>
+        <a href="#community" class="block px-3 py-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200" data-action="mobile-menu#hide">Community</a>
         <div class="pt-4 space-y-2">
-          <a href="<%= rodauth(:user).login_path %>" class="block text-center px-3 py-2 text-neutral-600 hover:text-neutral-900 transition-colors duration-200 font-medium" data-action="click->mobile-menu#hide">
-            Sign In
+          <a href="<%= authenticated? ? rodauth(:user).logout_path : rodauth(:user).login_path %>" class="block text-center px-3 py-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200 font-medium" data-action="mobile-menu#hide">
+            <%= authenticated? ? "Log Out" : "Sign In" %>
           </a>
-          <a href="<%= rodauth(:user).create_account_path %>" class="block text-center bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded-lg font-medium transition-colors duration-200" data-action="click->mobile-menu#hide">
+          <a href="<%= rodauth(:user).create_account_path %>" class="block text-center bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded-lg font-medium transition-colors duration-200 <%= authenticated? ? 'hidden' : '' %>" data-action="mobile-menu#hide">
             Get Started
           </a>
         </div>
