@@ -63,7 +63,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "plutonium", "~> 0.26.8"
+gem "plutonium", "~> 0.26.10"
 
 gem "annotated", "~> 0.1.1", group: :development
 
